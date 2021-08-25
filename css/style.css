@@ -1,0 +1,44 @@
+html{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.container{
+    margin: 25% auto;
+    display: flex;
+    padding: 2%;
+    border-radius: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.623);
+}
+@media(min-width: 768px){
+    .container{
+        margin: 20% auto;
+        width: 50%;
+    }
+}
+@media(min-width:1024px){
+    .container{
+        margin: 15% auto;
+        width: 25%;
+    }
+}
+.location{
+    display: flex;
+}
+.temp-group{
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    margin:3% 0;
+}
+.real-feel,
+.forcast{
+    font-size: 22px;
+    font-weight: 700;
+}

@@ -4,60 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="css/style.css">
     <title>Weather App</title>
 </head>
 <body>
-    <div class="city">City: </div>
-    <div class="state">State:</div>
-    <div class="temp">Tempurature:</div>
-    <div class="real-feel">Real feel:</div>
-    <div class="high-temp">High-today:</div>
-    <div class="low-temp">Low-today:</div>
-    
-    <script>
-        const city = document.querySelector('.city');
-        const state = document.querySelector('.state');
-        const temp = document.querySelector('.temp');
-        const realFeel = document.querySelector('.real-feel');
-        const highTemp = document.querySelector('.high-temp');
-        const lowTemp = document.querySelector('.low-temp');
- 
+    <div class="container">
+        <div class="location">
+            <h3 class="city-state">City: </h3>
+        </div>
+        <h1 class="temp"></h1>
+        <div class="forcast">Weather: </div>
+        <div class="temp-group">
+            <div class="high-temp"></div>
+            <div class="low-temp"></div>
+        </div>
+            <div class="real-feel">Real feel:</div>
         
-        if(window.navigator.geolocation){
-            function getCityState(data){
-                let apiCity = data.results[0].components.city;
-                let apiState =  data.results[0].components.state;
-                city.textContent = `City: ${apiCity}`;
-                state.textContent = `State: ${apiState}`;
-                return;
-            }
-            function getTempurature(data){
-                let apiTemp = data.main.temp.toFixed(0);
-                let apiMaxTemp = data.main.temp_max.toFixed(0);
-                let apiMinTemp = data.main.temp_min.toFixed(0);
-                let apiRealFeel = data.main.feels_like.toFixed(0);
-
-                temp.textContent = `Tempurature: ${apiTemp} °F`;
-                realFeel.textContent = `Real feel: ${apiRealFeel} °F`;
-                lowTemp.textContent = `Low-today: ${apiMinTemp} °F`;
-                highTemp.textContent = `High-today: ${apiMaxTemp} °F`;
-
-            }
-            const successfullLookup = (position) => {
-                const {latitude, longitude} = position.coords;
-                fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=cd07f8fb9b314f83b3a4ff22730356af`)
-                    .then(response => response.json())
-                    .then(data => getCityState(data));
-
-                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=272c035aa592e8c7dc033411411ed5b6`)
-                    .then(response => response.json())
-                    .then(data => getTempurature(data));
-                
-            }
-
-            window.navigator.geolocation.getCurrentPosition(successfullLookup, console.log);
-        }
-    </script>
+    </div>
+    <script src="JS/script.js"></script>
 </body>
 </html>
